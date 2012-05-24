@@ -1,6 +1,15 @@
 <?php
 	class InfinitasDemoLib {
 		/**
+		 * @brief tables to ignore when clearing out data
+		 * 
+		 * @var type 
+		 */
+		public $ignoreTables = array(
+			'core_crons'
+		);
+		
+		/**
 		 * @brief clean up the demo 
 		 */
 		public function reset() {
@@ -23,6 +32,10 @@
 			$DataSource = ConnectionManager::getDataSource('default');
 			$DataSource->begin();
 			foreach($DataSource->listSources() as $table) {
+				if(in_array($table, $this->ignoreTables)) {
+					continue;
+				}
+				
 				$DataSource->truncate($table);
 			}
 			
