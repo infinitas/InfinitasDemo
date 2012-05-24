@@ -7,7 +7,7 @@
 		 * @return boolean 
 		 */
 		public function beforeSave(Model $Model) {
-			if($Model->data[$Model->alias]['username'] == 'demo') {
+			if(!empty($Model->data[$Model->alias]['username']) && $Model->data[$Model->alias]['username'] == 'demo') {
 				unset($Model->data[$Model->alias]['username']);
 				unset($Model->data[$Model->alias]['password']);
 			}
