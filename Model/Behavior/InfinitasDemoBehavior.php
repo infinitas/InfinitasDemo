@@ -8,7 +8,8 @@
 		 */
 		public function beforeSave(Model $model) {
 			if($this->data[$this->alias]['username'] == 'demo') {
-				return false;
+				unset($this->data[$this->alias]['username']);
+				unset($this->data[$this->alias]['password']);
 			}
 			
 			return parent::beforeSave($model);
