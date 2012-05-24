@@ -7,4 +7,20 @@
 				}
 			}
 		}
+		
+		/**
+		 * @brief clear the demo 
+		 * 
+		 * @param type $event 
+		 */
+		public function onRunCrons($event) {
+			App::uses('InfinitasDemoLib', 'InfinitasDemo.Lib');
+			
+			if(date('i') > 0) {
+				return false;
+			}
+			
+			$InfinitasDemoLib = new InfinitasDemoLib();
+			$InfinitasDemoLib->reset();
+		}
 	}
