@@ -6,10 +6,10 @@
 		 * @param Model $model
 		 * @return boolean 
 		 */
-		public function beforeSave(Model $model) {
-			if($this->data[$this->alias]['username'] == 'demo') {
-				unset($this->data[$this->alias]['username']);
-				unset($this->data[$this->alias]['password']);
+		public function beforeSave(Model $Model) {
+			if($Model->data[$Model->alias]['username'] == 'demo') {
+				unset($Model->data[$Model->alias]['username']);
+				unset($Model->data[$Model->alias]['password']);
 			}
 			
 			return parent::beforeSave($model);
